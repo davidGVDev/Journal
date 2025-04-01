@@ -12,8 +12,11 @@ import {
   ListItemText,
   Grid
 } from "@mui/material";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 export const SideBar = ({ drawerWidth }: { drawerWidth: number }) => {
+  const { displayName } = useSelector((state: RootState) => state.auth);
   return (
     <Box
       component="nav"
@@ -29,7 +32,7 @@ export const SideBar = ({ drawerWidth }: { drawerWidth: number }) => {
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-            Material-UI
+            {displayName}
           </Typography>
         </Toolbar>
         <Divider />
