@@ -92,7 +92,9 @@ yarn dev
   - Editor de texto enriquecido
   - Organización por fecha
   - Etiquetas y categorías
+  - ⚠️ Pendiente: Eliminación de notas
 - 🖼️ Gestión de imágenes
+  - ⚠️ Pendiente: CRUD completo de imágenes en las notas
   - Carga múltiple de imágenes
   - Vista previa
   - Optimización automática

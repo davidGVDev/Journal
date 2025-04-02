@@ -8,6 +8,10 @@ export const useForm = (initialForm: any = {}, formValidations: any = {}) => {
     createValidators();
   }, [formState]);
 
+  useEffect(() => {
+    setFormState(initialForm);
+  }, [initialForm]);
+
   const onInputChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = target;
     setFormState({

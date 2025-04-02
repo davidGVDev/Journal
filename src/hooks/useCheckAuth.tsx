@@ -7,7 +7,7 @@ import { login } from "../store/auth/authSlice";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store/store";
-
+import { startLoadingNotes } from "../store/journal/thunks";
 export const useCheckAuth = () => {
   const { status } = useSelector((state: RootState) => state.auth);
   const dispatch = useDispatch<AppDispatch>();
@@ -16,10 +16,19 @@ export const useCheckAuth = () => {
     onAuthStateChanged(FireBaseAuth, async (user) => {
       if (!user) {
         dispatch(logout({ errorMessage: null }));
+        return;
       }
-      dispatch(login(user));
+      dispatch(
+        login({
+          uid: user.uid,
+          email: user.email,
+          displayName: user.displayName,
+          photoURL: user.photoURL,
+        })
+      );
+      dispatch(startLoadingNotes())
     });
-  }, [status]);
+  }, []);
   return {
     status,
   };
